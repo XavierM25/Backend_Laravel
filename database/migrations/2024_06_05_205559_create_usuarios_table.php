@@ -1,0 +1,56 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateUsuariosTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('usuarios', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->string('apellido_paterno');
+            $table->string('apellido_materno');
+            $table->enum('sexo', ['M', 'F']);
+            $table->string('username')->unique();
+            $table->string('contraseña');
+            $table->string('email')->unique();
+            $table->date('fecha_nacimiento');
+            $table->unsignedBigInteger('rol_id')->nullable();
+            $table->string('imagen_perfil')->nullable();
+            $table->string('campus')->nullable();
+            $table->string('carrera')->nullable();
+            $table->string('numero_telefono')->nullable();
+            $table->timestamps();
+
+            $table->foreign('rol_id')->references('id')->on('roles')->onDelete('set null');
+        });
+
+        Schema::create('sessions', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+            $table->longText('payload');
+            $table->integer('last_activity')->index();
+        });
+
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('usuarios');
+    }
+}
