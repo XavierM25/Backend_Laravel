@@ -10,8 +10,7 @@ RUN composer install \
     --optimize-autoloader \
     --apcu-autoloader \
     --ansi \
-    --no-scripts \
-    --audit
+    --no-scripts
 
 # Production stage
 FROM php:8.2-apache
