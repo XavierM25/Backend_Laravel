@@ -20,9 +20,8 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-        'http://localhost:3000',
-        'https://your-frontend-app.onrender.com', // Reemplaza con tu dominio frontend
-        env('FRONTEND_URL', 'http://localhost:3000')
+        'http://localhost/frontend_php', // Reemplaza con tu dominio frontend
+        env('FRONTEND_URL', 'http://localhost/frontend_php')
     ],
 
     'allowed_origins_patterns' => [],
