@@ -19,10 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [
-        'http://localhost/frontend_php', // Reemplaza con tu dominio frontend
-        env('FRONTEND_URL', 'http://localhost/frontend_php')
-    ],
+    'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],
 
