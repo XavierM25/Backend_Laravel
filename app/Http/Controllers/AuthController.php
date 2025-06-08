@@ -120,7 +120,7 @@ class AuthController extends Controller
             $token = $user->createToken("API TOKEN")->plainTextToken;
 
             // Define la ruta home según el rol
-            $home_route = $user->rol_id == 1 ? 'http://localhost:3000/Cliente/index.php' : 'http://localhost:3000/Admin/index.php';
+            $home_route = $user->rol_id == 1 ? 'https://ucvdeporte3.rf.gd/Cliente/index.php' : 'https://ucvdeporte3.rf.gd/Admin/index.php';
 
             return response()->json([
                 'status'=> true,
